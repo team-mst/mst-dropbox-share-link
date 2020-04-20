@@ -1,0 +1,21 @@
+name: 'MST dropbox file share link'
+description: 'This action make a share link for a file on dropbox.'
+author: 'Zeljko Romanovic MST'
+inputs:
+  dropbox-api-key:
+    description: dropbox API Key. This parameter should be stored in the GitHub secrets.
+    required: true
+  dropbox-file-path:
+    description: Path of a file which needs to be shared.
+    required: true
+outputs:
+  dropbox-link-password:
+    description: auto generated guid
+  dropbox-link:
+    description: URL for a shared file.
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+branding:
+  icon: 'file-plus'
+  color: 'blue'
