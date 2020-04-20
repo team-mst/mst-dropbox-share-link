@@ -24,8 +24,6 @@ async function run() {
                 requested_visibility
             }
         });
-        core.debug(item.url);
-        core.debug(link_password);
         
         core.setOutput(OUTPUT_DROPBOX_LINK, item.url);
         core.setOutput(OUTPUT_DROPBOX_LINK_PASSWORD, link_password);
