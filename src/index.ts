@@ -17,21 +17,16 @@ async function run() {
 
         let requested_visibility: sharing.RequestedVisibility = {'.tag': 'password'};
         let link_password = uuidv1();
-        console.log(link_password);
-        dropbox.sharingCreateSharedLinkWithSettings({
+        let item = await dropbox.sharingCreateSharedLinkWithSettings({
             path: dropboxFilePath,
             settings: {
                 link_password,
                 requested_visibility
             }
-        })
-        .then(function(response) {
-            core.setOutput(OUTPUT_DROPBOX_LINK, response.url);
-            core.setOutput(OUTPUT_DROPBOX_LINK_PASSWORD, link_password);
-        })
-        .catch(function(error) {
-            core.setFailed(error);
         });
+        
+        core.setOutput(OUTPUT_DROPBOX_LINK, item.url);
+        core.setOutput(OUTPUT_DROPBOX_LINK_PASSWORD, link_password);
     } catch(exception) {
         core.setFailed(exception);
     }
